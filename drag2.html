@@ -44,6 +44,14 @@
             border-radius: 2px;
             background-color: rgb(7, 119, 218);
             color: white;
+            min-height: 2rem;
+        }
+        button:hover{
+            background-color: rgb(64, 122, 173);
+        }
+        button:focus{
+            border-style:none;
+            border-width: 0;
         }
     </style>
 </head>
@@ -58,11 +66,11 @@
     <script>
 
         var objects=[
-            {q:"Supermarket",movements:[]},
-            {q:"Park",movements:[]},
-            {q:"School",movements:[]},
-            {q:"Hell",movements:[]},
-            {q:"Home",movements:[]},
+            {q:"Supermarket",movements:{x:[],y:[]}},
+            {q:"Park",movements:{x:[],y:[]}},
+            {q:"School",movements:{x:[],y:[]}},
+            {q:"Hell",movements:{x:[],y:[]}},
+            {q:"Home",movements:{x:[],y:[]}},
         ]
 
         var grid=document.querySelector(".grid")
@@ -88,20 +96,20 @@
                      document.querySelector(`[data-parent="${i.dataset.q}"]`).style.width=e.targetTouches[0].clientX+"px"
                      document.querySelector(`[data-parent="${i.dataset.q}"]`).style["font-size"]="100%"
                     twidth=e.targetTouches[0].clientX
-                    objects.find((el)=>el.q==i.dataset.q).movements.push(twidth)
+                    objects.find((el)=>el.q==i.dataset.q).movements.x.push(twidth)
                  })
                  i.addEventListener("touchend",(e)=>{
-                     var movement=objects.find((el)=>el.q==i.dataset.q).movements
-                   if(movement.length>0){
+                     var movement=objects.find((el)=>el.q==i.dataset.q).movements.x
                     if(twidth<(75/100)*i.getBoundingClientRect().width){
                         document.querySelector(`[data-parent="${i.dataset.q}"]`).className="child"
                         document.querySelector(`[data-parent="${i.dataset.q}"]`).style.width="0px"
                         document.querySelector(`[data-parent="${i.dataset.q}"]`).style["font-size"]="0"
-                        objects.find((el)=>el.q==i.dataset.q).movements=[]
+                        objects.find((el)=>el.q==i.dataset.q).movements.x=[]
                     }else if(movement[movement.length-1]>movement[movement.length-2]){
                         i.remove()
+                        objects.find((el)=>el.q==i.dataset.q).movements.x=[]
                     }
-                   }
+                   
                     
                  })
                  
