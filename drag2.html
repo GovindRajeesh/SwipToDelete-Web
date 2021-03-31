@@ -108,6 +108,11 @@
                     }else if(movement[movement.length-1]>movement[movement.length-2]){
                         i.remove()
                         objects.find((el)=>el.q==i.dataset.q).movements.x=[]
+                    }else{
+                        document.querySelector(`[data-parent="${i.dataset.q}"]`).className="child"
+                        document.querySelector(`[data-parent="${i.dataset.q}"]`).style.width="0px"
+                        document.querySelector(`[data-parent="${i.dataset.q}"]`).style["font-size"]="0"
+                        objects.find((el)=>el.q==i.dataset.q).movements.x=[]
                     }
                    
                     
