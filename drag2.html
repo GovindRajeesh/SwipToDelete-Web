@@ -100,7 +100,7 @@
                  })
                  i.addEventListener("touchend",(e)=>{
                      var movement=objects.find((el)=>el.q==i.dataset.q).movements.x
-                    if(twidth<(75/100)*i.getBoundingClientRect().width || 
+                    if(twidth<(50/100)*i.getBoundingClientRect().width || 
                     movement[movement.length-1]<movement[movement.length-2]){
                         document.querySelector(`[data-parent="${i.dataset.q}"]`).className="child"
                         document.querySelector(`[data-parent="${i.dataset.q}"]`).style.width="0px"
